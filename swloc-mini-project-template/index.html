@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chip Fiend</title>
+  <script type="module" src="main.js"></script>
+  <link rel="stylesheet" href="styles.css" media="all">
+</head>
+<body class="content">
+  <header class="site-header limit-item-width">
+    <div class="top-bar">
+      <h1 class="top-bar__logo site-header__branding" >
+        <a href="/" class="unlink">Chip Fiend</a>
+      </h1>
+
+      <div data-if="userIsLoggedIn" class="top-bar__menu">
+        <details class="top-bar__menu menu">
+          <summary class="menu__title">
+            <div class="monogram" data-apply-function="setupMonogram"></div>
+          </summary>
+
+          <nav class="menu__body">
+            <ul class="delist">
+              <li data-template class="menu__login-info">Logged in as {$givenName} {$surname}</li>
+              <li><a href="settings.html" class="unlink menu__item">Settings</a></li>
+              <li><button data-apply-function="setupLogoutButton" type="submit" class="unbutton menu__item">Logout</button>
+            </ul>
+          </nav>
+        </details>
+      </div>
+
+      <div data-if="!userIsLoggedIn">
+        <a class="site-header__link" href="login.html">Login or sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="content__main">
+    <div class="jumbotron limit-item-width">
+      <h2 data-template data-if="userIsLoggedIn"> Hello, {$givenName}! </h2>
+      <h2 data-if="!userIsLoggedIn"> Welcome </h2>
+      <p>
+        The latest in chip news, reviews, and chips from around the world.
+      </p>
+    </div>
+
+    <section class="limit-width">
+      <h2>News</h2>
+      <p data-template data-prop-article-count="3" data-parse-number="articleCount">{$articleCount} new article(s)</p>
+
+      <article class="box article">
+        <h3 class="article__title">
+          <!-- Don't localize this -->
+          BREAKING: Paprika shortage in Germany causes panic
+        </h3>
+
+        <div class="article__byline byline">
+          <span data-template data-prop-author="Eddie Antonio Santos" class="byline__author">
+            Written by {$author}
+          </span>
+
+          <span data-template data-prop-date="2023-02-14" data-parse-date="date" class="byline__date">
+            Posted on {$date}
+          </span>
+        </div>
+
+        <p>
+          <!-- Don't localize this -->
+          This article text should be untranslated because it is
+          user-generated content.
+        </p>
+
+        <p>
+          <!-- Don't localize this -->
+          (BERLIN) Panic erupts as shipments of Lays Paprika stop. Sources
+          say it's a "cataclysmic turn of events"
+        </p>
+      </article>
+
+      <article class="box article">
+        <h3 class="article__title">
+          <!-- Don't localize this -->
+          THE BEST 🍁 CHIP? All-Dressed vs. Ketchup
+        </h3>
+
+        <div class="article__byline byline">
+          <span data-template data-prop-author="Eddie Antonio Santos" class="byline__author">
+            Written by {$author}
+          </span>
+
+          <span data-template data-prop-date="2023-02-14" data-parse-date="date" class="byline__date">
+            Posted on {$date}
+          </span>
+        </div>
+
+        <p>
+          <!-- Don't localize this -->
+          This article text should be untranslated because it is
+          user-generated content.
+        </p>
+
+        <p>
+          <!-- Don't localize this -->
+          Hands down, All-dressed. Ketchup is a novelty invented for
+          children's birthday parties.
+        </p>
+      </article>
+
+      <article class="box article">
+        <h3 class="article__title">
+          <!-- Don't localize this -->
+          POLL: The correct way to make a Tayto sandwich
+        </h3>
+
+        <div class="article__byline byline">
+          <span data-template data-prop-author="Eddie Antonio Santos" class="byline__author">
+            Written by {$author}
+          </span>
+
+          <span data-template data-prop-date="2023-02-27" data-parse-date="date" class="byline__date">
+            Posted on {$date}
+          </span>
+        </div>
+
+        <p>
+          <!-- Don't localize this -->
+          This rest of the article text should be untranslated because it is
+          user-generated content.
+        </p>
+
+        <p>
+          <!-- Don't localize this -->
+          The correct way is to lather up some a slice of a Brennans Family
+          Pan with a load of Kerrygold. Then to throw a generous layer of
+          Tayto in-between.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer limit-item-width">
+    <p data-template data-prop-year=2023>
+      Copyright © {$year} Chip Fiend
+    </p>
+  </footer>
+</body>
+</html>

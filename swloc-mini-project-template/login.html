@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chip Fiend</title>
+  <script type="module" src="main.js"></script>
+  <link rel="stylesheet" href="styles.css" media="all">
+</head>
+<body class="content">
+  <header class="site-header limit-item-width">
+    <div class="top-bar">
+      <h1 class="top-bar__logo site-header__branding" >
+        <a href="/" class="unlink">Chip Fiend</a>
+      </h1>
+
+      <div data-if="userIsLoggedIn" class="top-bar__menu">
+        <details class="top-bar__menu menu">
+          <summary class="menu__title">
+            <div class="monogram" data-apply-function="setupMonogram"></div>
+          </summary>
+
+          <nav class="menu__body">
+            <ul class="delist">
+              <li data-template class="menu__login-info">Logged in as {$givenName} {$surname}</li>
+              <li><a href="settings.html" class="unlink menu__item">Settings</a></li>
+              <li><button data-apply-function="setupLogoutButton" type="submit" class="unbutton menu__item">Logout</button>
+            </ul>
+          </nav>
+        </details>
+      </div>
+
+      <div data-if="!userIsLoggedIn">
+        <a class="site-header__link" href="login.html">Login or sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="content__main">
+    <div data-if="validationError" class="box validation-error">
+      <h3>Error</h3>
+      <ul>
+        <li data-if="validationError == 'bad-login'">Wrong email or password</li>
+        <li data-if="validationError == 'password-mismatch'">Password do not match</li>
+      </ul>
+    </div>
+
+    <div class="box box--narrow">
+      <form data-apply-function="setupLogin" action="/" class="form">
+        <h2 class="form__title"> Login </h2>
+        <div class="input">
+          <label for="login-email" class="input__label">Email</label>
+          <input id="login-email" type="email" name="email" required class="input__input">
+        </div>
+
+        <div class="input">
+          <label for="login-password" class="input__label">Password</label>
+          <input id="login-password" type="password" name="password" required class="input__input">
+        </div>
+
+        <div class="actions">
+          <button class="btn btn--primary" type="submit">Login</button>
+        </div>
+      </form>
+
+      <p class="separator">Or</p>
+
+      <form data-apply-function="setupRegister" action="/" class="form">
+        <h2 class="form__title"> Register </h2>
+
+        <div class="input">
+          <label for="register-given-name" class="input__label">Given name</label>
+          <input id=" register-given-name" type="text" name="given" required class="input__input">
+        </div>
+
+        <div class="input">
+          <label for="register-surname" class="input__label">Surname</label>
+          <input id=" register-surname" type="text" name="surname" class="input__input">
+        </div>
+
+        <div class="input">
+          <label for="register-email" class="input__label">Email</label>
+          <input id="register-email" type="email" name="email" required class="input__input">
+        </div>
+
+        <div class="input">
+          <label for="register-password" class="input__label">Password</label>
+          <input id="register-password" type="password" name="password" required class="input__input">
+        </div>
+
+        <div class="input">
+          <label for="register-confirm-password" class="input__label">Confirm Password</label>
+          <input id=" register-confirm-password" type="password" name="confirm-password" required class="input__input">
+        </div>
+
+        <div class="actions">
+          <button class="btn btn--primary" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer limit-item-width">
+    <p data-template data-prop-year=2023>
+      Copyright © {$year} Chip Fiend
+    </p>
+  </footer>
+</body>
+</html>

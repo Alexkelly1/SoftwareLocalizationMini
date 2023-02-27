@@ -1,0 +1,338 @@
+@charset "UTF-8";
+
+/* === Global styles === */
+:root {
+  --content-width: 960px;
+  /* Default accent color. Will be overridden by JavaScript. */
+  --accent-color: rebeccapurple;
+}
+
+:root,
+:root::before,
+:root::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--accent-color);
+  color: #f9f9f9;
+}
+
+body {
+  margin: 0;
+  /* Use the system's default sans-serif font. */
+  /* Stolen from new.css: https://github.com/xz/new.css/blob/master/new.css */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+}
+
+/* === Utility classes === */
+
+/* Utilities need to be defined first to satisfy the cascade. */
+
+.limit-width,
+.limit-item-width > * {
+  margin-inline: auto;
+  max-width: var(--content-width);
+}
+
+/* Removes link styling from <a> elements */
+.unlink {
+  text-decoration: none;
+  color: currentColor;
+}
+
+/* Removes list styling from <ul>/<ol> elements */
+.delist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Removes default button styling from <button> elements */
+.unbutton {
+  display: inline;
+  border: 0;
+  font-size: unset;
+  padding: 0;
+}
+
+/* Add a medium amount of block margin to an element. */
+.margin-m {
+  margin-block: 1rem;
+}
+
+/* === General === */
+
+/* Make the main container flex so that the page can have a sticky footer. */
+.content {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+}
+
+.content__main {
+  /* Makes the content fill up all the space. */
+  flex: 1;
+}
+
+/* Top banner */
+.site-header {
+  background-color: #333;
+  color: #f9f9f9;
+}
+
+.site-header__link {
+  color: #f0f0f0;
+}
+
+/* "Jumbotron" or "hero unit" -- place where you can put a big,
+ * attention-grabbing marketing blurb. */
+.jumbotron {
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.site-footer {
+  margin-block-start: 2em;
+  background-color: #eee;
+}
+
+.top-bar {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding-inline: 1rem;
+}
+
+/* The logo should occupy most of the space on the top-bar. */
+.top-bar__logo {
+  flex: 1;
+}
+
+/* I called this thing the "monogram", because it's usually the first letter
+ * of your name. */
+.monogram {
+  --monogram-size: 2rem;
+
+  color: white;
+  background-color: var(--accent-color);
+
+  display: inline-block;
+  width: var(--monogram-size);
+  height: var(--monogram-size);
+  line-height: var(--monogram-size);
+  font-size: calc(2 * var(--monogram-size) / 3);
+  text-align: center;
+  clip-path: circle(50%);
+}
+
+/* === Menu === */
+
+.menu {
+  position: relative;
+}
+
+.menu__body {
+  position: absolute;
+  right: 0;
+  top: 150%;
+  padding: 1rem;
+  min-width: 10rem;
+
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #333;
+  box-shadow: 4px 4px black;
+}
+
+.menu__title {
+  cursor: pointer;
+}
+
+.menu__title:hover {
+  filter: brightness(1.25);
+}
+
+.menu__login-info {
+  margin-block-end: .25rem;
+  padding-block-end: .25rem;
+  border-bottom: 1px solid #333;
+}
+
+.menu__item {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding-block: .35rem;
+
+  color: currentColor;
+  background-color: unset;
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu__item:hover {
+  background-color: #eee;
+}
+
+/* A generic box thing, with a drop shadow */
+.box {
+  margin-inline: auto;
+  margin-block: 1rem;
+  box-shadow: 4px 4px #111;
+  border: 1px solid #111;
+  padding: 1rem;
+  max-width: var(--content-width);
+}
+
+.box--narrow {
+  max-width: 480px;
+}
+
+/* === News article styles === */
+
+.article__title {
+  margin-block: .5rem;
+}
+
+.article__byline {
+  font-size: smaller;
+  color: #333;
+}
+
+.byline {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.byline__author::after {
+  content: "•";
+  margin-inline: .5rem;
+}
+
+/* === Form stuff === */
+
+.validation-error {
+  color: #bd1313;
+}
+
+.form__title {
+  margin-block: 0 1rem;
+}
+
+.input {
+  display: flex;
+  flex-flow: column;
+  margin-block-end: 1rem;
+}
+
+.input__label {
+  margin-block-end: .5rem;
+}
+
+.btn {
+  display: inline-block;
+
+  padding-block: .5rem;
+  padding-inline: .75rem;
+
+  border-radius: 0;
+  border: 1px solid #111;
+  font-size: large;
+  background-color: #f0f0f0;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  border-color: #4d4d4d;
+}
+
+.btn--primary {
+  color: white;
+  background-color: #3367E1;
+  border-color: #1A3677;
+}
+
+.actions {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-block-start: 1rem;
+
+  justify-content: flex-end;
+}
+
+.separator {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  font-style: italic;
+  font-size: larger;
+}
+
+.separator::before,
+.separator::after {
+  flex: 1;
+  /* Make a straight, dark horizontal line. */
+  content: "";
+  border: 1px solid #333;
+  height: 0;
+}
+
+.separator::before { margin-inline-end: .5rem; }
+.separator::after { margin-inline-start: .5rem; }
+
+/* === Settings === */
+
+.colors {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Adapted from: https://moderncss.dev/pure-css-custom-styled-radio-buttons/#step-1-hide-the-native-radio-input */
+input.color[type=radio] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+
+  display: grid;
+  place-content: center;
+}
+
+.color {
+  --option-color: #fff;
+  width: 2rem;
+  height: 2rem;
+  border: .15rem solid #333;
+  border-radius: 50%;
+  /*background-color: var(--option-color);*/
+  cursor: pointer;
+}
+
+.color::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  box-shadow: inset 2rem 2rem var(--option-color);
+  transform: scale(.75);
+  transition: transform 250ms;
+}
+
+.color:checked::before {
+  transform: scale(.9);
+}
+
+.color:hover {
+  border-color: #3367E1;
+}
+
+.color.color--blue { --option-color: #1565c0; }
+.color.color--red { --option-color: #c62828; }
+.color.color--green { --option-color: #2e7d32; }
+.color.color--purple { --option-color: #7b1fa2; }

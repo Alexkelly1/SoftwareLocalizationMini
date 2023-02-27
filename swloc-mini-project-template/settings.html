@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chip Fiend</title>
+  <script type="module" src="main.js"></script>
+  <link rel="stylesheet" href="styles.css" media="all">
+</head>
+<body class="content">
+  <header class="site-header limit-item-width">
+    <div class="top-bar">
+      <h1 class="top-bar__logo site-header__branding" >
+        <a href="/" class="unlink">Chip Fiend</a>
+      </h1>
+
+      <div data-if="userIsLoggedIn" class="top-bar__menu">
+        <details class="top-bar__menu menu">
+          <summary class="menu__title">
+            <div class="monogram" data-apply-function="setupMonogram"></div>
+          </summary>
+
+          <nav class="menu__body">
+            <ul class="delist">
+              <li data-template class="menu__login-info">Logged in as {$givenName} {$surname}</li>
+              <li><a href="settings.html" class="unlink menu__item">Settings</a></li>
+              <li><button data-apply-function="setupLogoutButton" type="submit" class="unbutton menu__item">Logout</button>
+            </ul>
+          </nav>
+        </details>
+      </div>
+
+      <div data-if="!userIsLoggedIn">
+        <a class="site-header__link" href="login.html">Login or sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="content__main">
+    <div class="box box--narrow">
+      <h2>Settings</h2>
+
+      <form data-apply-function="setupFavoriteColor" class="margin-m">
+        <fieldset>
+          <legend>Favorite Color</legend>
+
+          <div class="colors">
+            <input id="color-1" class="color color--blue" type="radio" name="color" value="blue">
+            <input id="color-2" class="color color--red" type="radio" name="color" value="red">
+            <input id="color-3" class="color color--green" type="radio" name="color" value="green">
+            <input id="color-4" class="color color--purple" type="radio" name="color" value="purple">
+          </div>
+        </fieldset>
+      </form>
+
+      <form data-apply-function="setupChangeName">
+        <fieldset>
+          <legend>Change name</legend>
+
+          <div class="input">
+            <label for="change-given-name" class="input__label">Given name</label>
+            <input id=" change-given-name" type="text" name="given" required class="input__input">
+          </div>
+
+          <div class="input">
+            <label for="change-surname" class="input__label">Surname</label>
+            <input id=" change-surname" type="text" name="surname" class="input__input">
+          </div>
+
+        <div class="actions">
+          <button class="btn btn--primary" type="submit">Change name</button>
+        </div>
+        </fieldset>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer limit-item-width">
+    <p data-template data-prop-year=2023>
+      Copyright © {$year} Chip Fiend
+    </p>
+  </footer>
+</body>
+</html>
